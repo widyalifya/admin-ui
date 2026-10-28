@@ -1,44 +1,40 @@
+import { useEffect, useState } from "react";
+import PostCard from "./PostCard";
+import { getPosts } from "./Services";
 
-import React, { useEffect, useState } from "react"
-import UserCard from './UserCard'
-import { getUsers } from './Services';
+const Exercise = () => {
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getPosts();
+        setPosts(data.slice(0, 9));;
+      } catch (err) {
+        console.error("Gagal mengambil data post:", err);
+        setError(err.message);
+      }
+    };
 
-function Exercise() {
-
-  const [users, setUsers] = useState([]);
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const data = await getUsers();
-      setUsers(data);
-    } catch (error) {
-      console.error("[Component] Gagal menampilkan data:", error.message);
-    }
-  };
-  fetchData();
-}, []);
-
-  //console.log(getUsers());
-  // Filter hanya city-nya bukan Semarang
-  //const nonSemarangUsers = users.filter((user) => user.city !== "Semarang");
+    fetchPosts();
+  }, []);
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-100 p-6">
-        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
-          User Cards
-        </h1>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
+        Post Cards
+      </h1>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-           {users.map((user) => (
-            <UserCard key={user.email} {...user} />
-          ))}
-        </div>
+      {error && <p className="text-center text-red-500 mb-4">{error}</p>}
+
+      <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {posts.map((post) => (
+          <PostCard key={post.id} title={post.title} body={post.body} />
+        ))}
       </div>
-    </>
+    </div>
   );
-}
+};
 
-export default Exercise
+export default Exercise;
