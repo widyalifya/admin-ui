@@ -11,6 +11,7 @@ import OrganismLoginPanel from "./latihan/organisms/OrganismLoginPanel.jsx";
 import TemplateCenter from "./latihan/templates/TemplateCenter.jsx";
 import PageLogin from "./latihan/pages/PageLogin.jsx";
 import PageRegister from "./latihan/pages/PageRegister.jsx";
+import PageDashboard from "./latihan/pages/PageDashboard.jsx";
 
 
 //import Exercise from './latihan/Exercise.jsx'
@@ -18,6 +19,6 @@ import PageRegister from "./latihan/pages/PageRegister.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PageRegister />
+    <PageDashboard />
   </StrictMode>
 )
