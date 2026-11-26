@@ -1,8 +1,21 @@
 import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardPage from "./pages/dashboard";
+import BalancePage from "./pages/balance";
 
 function App() {
-  return <DashboardPage />;
+  const myRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <DashboardPage />,
+    },
+    {
+      path: "/balance",
+      element: <BalancePage />,
+    },
+  ]);
+
+  return <RouterProvider router={myRouter} />;
 }
 
 export default App;
