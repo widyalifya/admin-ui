@@ -12,6 +12,7 @@ import TemplateCenter from "./latihan/templates/TemplateCenter.jsx";
 import PageLogin from "./latihan/pages/PageLogin.jsx";
 import PageRegister from "./latihan/pages/PageRegister.jsx";
 import PageDashboard from "./latihan/pages/PageDashboard.jsx";
+import MainLayout from './components/Layouts/MainLayout.jsx';
 
 
 //import Exercise from './latihan/Exercise.jsx'
@@ -19,6 +20,6 @@ import PageDashboard from "./latihan/pages/PageDashboard.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PageDashboard />
+    <App />
   </StrictMode>
 )
